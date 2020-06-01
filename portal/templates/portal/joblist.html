@@ -1,0 +1,11 @@
+{% load static %}
+ 
+{{job.job_title}}
+
+
+<form action="{% url 'joblist' job.pk %}" class="" method="POST">
+    {% csrf_token%}
+
+    <button class="btn btn-primary" type="submit" name="job_id" value="{{ job.id }}">Apply</button>
+
+</form>

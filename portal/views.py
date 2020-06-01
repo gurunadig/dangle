@@ -5,7 +5,8 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from .forms import CreateUserForm
-
+from .models import Job, Profile
+from .filters import JobFilter
 
 def registerpage(request):
 	form = CreateUserForm()
@@ -40,6 +41,25 @@ def logoutUser(request):
 	logout(request)
 	return redirect('login')
 
+
 @login_required(login_url='login')
 def home(request):
-	return render(request, 'portal/landing.html')
+	jobs = Job.objects.all()
+	profile = Profile.objects.all()
+
+	myfilter = JobFilter(request.GET, queryset=jobs)
+	jobs = myfilter.qs
+	context = {'jobs':jobs, 'profile':profile, 'myfilter':myfilter}
+	return render(request, 'portal/landing.html', context)
+
+
+def profile(request):
+    profile = Profile.objects.all()
+    context = {'profile': profile}
+    return render(request, 'portal/profile.html', context)
+
+
+def joblist(request, pk_test ):
+    job = Job.objects.get(id=pk_test)
+    context = {'job': job}
+    return render(request, 'portal/joblist.html', context)
