@@ -27,4 +27,5 @@ class JobFilter(django_filters.FilterSet):
             'industry',
             'job_category',
             'job_type',
-         ]
+            'apply'
+        ]

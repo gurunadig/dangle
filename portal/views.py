@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
+from django.urls import reverse_lazy, reverse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from .forms import CreateUserForm
@@ -63,3 +64,8 @@ def joblist(request, pk_test ):
     job = Job.objects.get(id=pk_test)
     context = {'job': job}
     return render(request, 'portal/joblist.html', context)
+
+def applyjob(request, pk):
+	job = get_object_or_404(Job, id=request.POST.get('job_id'))
+	job.apply.add(request.user)
+	return HttpResponseRedirect(reverse('joblist', args=[str(pk)]))

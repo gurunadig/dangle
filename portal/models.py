@@ -1,9 +1,9 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 
 
 class Profile(models.Model):
-    # user = models.OneToOneField(user, null=True, on_delete=models.CASCADE) 
+    user = models.OneToOneField(User, null=True, on_delete=models.CASCADE) 
     dob = models.DateField(max_length=8)    
     clocation = models.CharField(max_length=30)
     qualification = models.CharField(max_length=30)
@@ -43,7 +43,7 @@ class Job(models.Model):
 	skills = models.CharField(max_length=30)
 	job_category = models.CharField(max_length=30)
 	job_type = models.CharField(max_length=30)
-	# apply = models.ManyToManyField(Account, related_name='applyjob')
+	apply = models.ManyToManyField(User, related_name='applyjob')
 	
 	def __str__(self):
 		return self.job_title
