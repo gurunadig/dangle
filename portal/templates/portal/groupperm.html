@@ -1,0 +1,82 @@
+{% extends 'portal/main.html' %}
+
+{% load static %}
+{% load crispy_forms_tags %} 
+
+{% block content %}
+
+
+{% comment %} 
+<div class="container">
+
+    <h4>Name</h4>
+    <div class="row">
+  
+      {%  for gname in gnames %}  
+  
+
+
+            {{gname.id}}
+            {{gname.name}}
+
+
+      {% endfor %}
+
+
+
+    </div>
+  </div>
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="container mt-8">
+
+    <h4>User names</h4>
+    <div class="row">
+
+
+       {%  for uname in unames %}  
+  
+
+
+            {{uname.id}}
+            {{uname.group_id}}
+
+
+      {% endfor %}
+
+
+
+    </div>
+  </div> {% endcomment %}
+
+
+<div class="container mt-8">
+
+    <h4>User names</h4>
+    <div class="row">
+
+
+       {%  for ugname in ugnames %}  
+  
+
+
+            {{ugname.id}}
+            {{ugname.group_id}}
+
+
+      {% endfor %}
+
+
+
+    </div>
+  </div>
+
+
+
+
+{% endblock %}

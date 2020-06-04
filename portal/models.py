@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User , Group
 
 
 class Profile(models.Model):
@@ -47,3 +47,8 @@ class Job(models.Model):
 	
 	def __str__(self):
 		return self.job_title
+
+
+# class Groups(models.Model):
+# 	groups = models.ManyToManyField(Group, null=True)
+# 	users = models.ManyToManyField(User, null=True, related_name='assignrole')

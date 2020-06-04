@@ -9,3 +9,15 @@ class CreateUserForm(UserCreationForm):
     class Meta:
         model = User
         fields = ['username', 'password1', 'password2']
+
+
+class CreateAdminForm(UserCreationForm):
+    class Meta:
+        model = User
+        fields = ['username', 'password1', 'password2']
+
+
+class CreateEmployerForm(UserCreationForm):
+    class Meta:
+        model = User
+        fields = ['username', 'password1', 'password2']
