@@ -43,7 +43,7 @@ class Job(models.Model):
 	skills = models.CharField(max_length=30)
 	job_category = models.CharField(max_length=30)
 	job_type = models.CharField(max_length=30)
-	apply = models.ManyToManyField(User, related_name='applyjob')
+	apply = models.ManyToManyField(User, related_name='applyjob', null='True', blank='True')
 	
 	def __str__(self):
 		return self.job_title

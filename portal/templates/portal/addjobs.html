@@ -3,21 +3,116 @@
 {% load static %}
 
 {% block content %}
+{% load crispy_forms_tags %} 
 
+<div class="row formdiv d-flex align-items-center justify-content-center">
 
+		<div class="col-md-3">
+      <form action="" method="POST">
+        
+        {% csrf_token %}
 
-<form action="" method="POST">
-  
-  {% csrf_token %}
+        {{ form.job_title|as_crispy_field  }}
+        {{ form.job_description|as_crispy_field  }}
+        {{ form.job_location|as_crispy_field  }}
+        {{ form.company_name|as_crispy_field  }}
+        {{ form.Designation|as_crispy_field  }}
+        {{ form.qualification|as_crispy_field  }}
+        {{ form.course|as_crispy_field  }}
+        {{ form.specialization|as_crispy_field  }}
+        {{ form.course_type|as_crispy_field  }}
+        {{ form.passing_year|as_crispy_field  }}
+        {{ form.experience|as_crispy_field  }}
+        {{ form.salary|as_crispy_field  }}
+        {{ form.industry|as_crispy_field  }}
+        {{ form.skills|as_crispy_field  }}
+        {{ form.job_category|as_crispy_field  }}
+        {{ form.job_type|as_crispy_field  }}
+        
+        <button class="btn btn-primary" type="submit">Submit</button>
+      </form> 
+      
+    </div>
+</div>
 
-  {{form}}  
-  
-  <button class="btn btn-primary" type="submit">Submit</button>
-</form>
+{% comment %} 
+<div class="row formdiv d-flex align-items-center justify-content-center">
+
+		<div class="col-md-3">
+		<h4>Post New Job</h4>
+			<form method="POST" action="">
+			{% csrf_token %}
+				<div class="input-group mb-3">
+						<input type="text" name="job_title" placeholder="Job title" class="form-control">
+				</div>
+				<div class="input-group mb-2">
+
+						<input type="text" name="job_description" placeholder="Job description" class="form-control" >
+				</div>
+        <div class="input-group mb-2">
+
+						<input type="text" name="job_location" placeholder="Job Location" class="form-control" >
+				</div>
+        <div class="input-group mb-2">
+
+						<input type="text" name="company_name" placeholder="Company name" class="form-control" >
+				</div>
+        <div class="input-group mb-2">
+
+						<input type="text" name="Designation" placeholder="Designation" class="form-control" >
+				</div>
+        <div class="input-group mb-2">
+
+						<input type="text" name="qualification" placeholder="Qualification" class="form-control" >
+				</div>
+        <div class="input-group mb-2">
+
+						<input type="text" name="course" placeholder="Course" class="form-control" >
+				</div>
+        <div class="input-group mb-2">
+
+						<input type="text" name="specialization" placeholder="Specialization" class="form-control" >
+				</div>
+        <div class="input-group mb-2">
+
+						<input type="text" name="course_type" placeholder="Course Type" class="form-control" >
+				</div>
+        <div class="input-group mb-2">
+
+						<input type="text" name="passing_year" placeholder="Passing Year" class="form-control" >
+				</div>
+        <div class="input-group mb-2">
+
+						<input type="text" name="salary" placeholder="Salary" class="form-control" >
+				</div>
+        <div class="input-group mb-2">
+
+						<input type="text" name="industry" placeholder="Industry" class="form-control" >
+				</div>
+        <div class="input-group mb-2">
+
+						<input type="text" name="skills" placeholder="Skills" class="form-control" >
+				</div>
+        <div class="input-group mb-2">
+
+						<input type="text" name="job_category" placeholder="Job category" class="form-control" >
+				</div>
+        <div class="input-group mb-2">
+
+						<input type="text" name="job_type" placeholder="Job type" class="form-control" >
+				</div>
+
+				<div class="d-flex justify-content-center mt-3 login_container">
+					<button class="btn btn-primary" type="submit">Submit</button>
+				</div>
+			</form>
+		</div>
+	</div>  {% endcomment %}
+
 
 {%  for job in jobs %}  
   
-      <div id="joblist" class="col-sm-12 col-md-6 col-lg-6">
+      <div id="" class="col-sm-12 col-md-6 col-lg-6">
         <div class="card jobcol">
           <div class="card-body">
          
@@ -27,8 +122,8 @@
               </span>
                <span class="">{{job.phone}}</span>
   
-              {% comment %} <a href="{% url 'updatedetail' detail.id %}"> Update </a>
-              <a href="{% url 'deletedetail' detail.id %}"> Delete </a> {% endcomment %}
+              <a href="{% url 'updatejobs' job.id %}"> Update </a>
+              <a href="{% url 'deletejobs' job.id %}"> Delete </a>
           </div>
         </div>
        
@@ -36,6 +131,6 @@
   
 {% endfor %} 
 
-  
+
 
 {% endblock %}

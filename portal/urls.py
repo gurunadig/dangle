@@ -18,6 +18,8 @@ urlpatterns = [
     # here starts admin urls 
     path('adminpanel/', views.adminpanel, name='adminpanel'),
     path('addjobs/', views.addjobs, name='addjobs'),
+    path('updatejobs/<int:pk>', views.updatejobs, name='updatejobs'),
+    path('deletejobs/<int:pk>', views.deletejobs, name='deletejobs'),
     path('appliedjobs/', views.appliedjobs, name='appliedjobs'),
     path('candidatesearch/', views.candidatesearch, name='candidatesearch'),
     path('profilelist/', views.profilelist, name='profilelist'),

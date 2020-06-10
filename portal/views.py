@@ -98,6 +98,30 @@ def addjobs(request):
 	context = {'jobs': jobs, 'form':form}
 	return render(request, 'portal/addjobs.html', context)
 
+
+def updatejobs(request, pk):
+    jobs = Job.objects.get(id=pk)
+    form = AddJobForm(instance=jobs)
+
+    if request.method == 'POST':
+        form = AddJobForm(request.POST, instance=jobs)
+        if form.is_valid():
+            form.save()
+            return redirect('/addjobs')
+
+    context = {'form':form}
+    return render(request, 'portal/addjobs.html', context)
+
+def deletejobs(request, pk):
+	jobs = Job.objects.get(id=pk)
+	if request.method == "POST":
+		jobs.delete()
+		return redirect('/addjobs')
+
+	context = {'item':jobs}
+	return render(request, 'portal/deletejobs.html', context)
+
+
 def appliedjobs(request):
 	return render(request, 'portal/appliedjobs.html')
 
