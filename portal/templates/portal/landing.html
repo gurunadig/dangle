@@ -8,25 +8,71 @@
 {% include 'portal/navbar.html' %}
 
 
+
+<!-- the landingpage ________________________________________________starts here__________________________ -->
+<div id="landrbg">
+
+  <div class="container">
+    <div class="row landdiv d-flex align-items-end">
+
+      <div class="col-sm-12 col-md-3 col-lg-3 ">
+
+        <h4>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+          if the printing and typesetting industry. 
+          </h4>
+          <a href="{% url 'jobdetails' %}" class="btn btn-primary">Find Jobs </a>
+
+      </div>
+
+      <div class="col-sm-12 col-md-9 col-lg-9">
+
+
+      </div>
+      
+
+    </div>
+
+  </div>
+</div>
+
+<!-- the landingpage ________________________________________________ ends here__________________________ -->
+
 {% comment %} {{ perms.portal }} {% endcomment %}
 
 {% if 'auth.admin' in perms %}
-<div class="container">
-    <div class="row">
-        <div id="joblist" class="col-sm-12 col-md-6 col-lg-6">
-            <div class="card jobcol">
+<div class="row jobcol card">
+  <div class="container">
+        <div id="joblist" class="col-sm-12 col-md-12 col-lg-12">
               <div class="card-body">
-
+              <h4 class="">Search</h4>
                 <form method="get">
-                    {{ myfilter.form }}
-                    <button class="btn btn-primary" type="submit">Search</button>
+                  <div class="row">
+                    <div class="col-md-3 form-group forfield">
+                        <div class="input-group mb-3">
+                          <input type="text" name="job_title" placeholder="Job Profile..." class="form-control searchsty">
+                        </div>
+                    </div>
+                    <div class="col-md-3 form-group forfield">
+                        <div class="input-group mb-3">
+                          <input type="text" name="skills" placeholder="Skills..." class="form-control searchsty">
+                        </div>
+                    </div>
+                    <div class="col-md-3 form-group forfield">
+                        <div class="input-group mb-3">
+                          <input type="text" name="job_location" placeholder="Location..." class="form-control searchsty">
+                        </div>
+                    </div>
+                    <div class="col-md-3 form-group forfield">
+                      <button class="btn btn-default searchbtn searchsty" type="submit">Search</button>
+                    </div>
+                    </div>
                 </form>
 
                 </div>
             </div>
         </div>
-    </div>
-</div>
+  </div>
+
 
 <div class="container">
 
@@ -36,17 +82,17 @@
       {%  for job in jobs %}  
   
       <div id="joblist" class="col-sm-12 col-md-6 col-lg-6">
-        <div class="card jobcol">
+        <div class="card jobcoldiv">
           <div class="card-body">
          
             <h6 class="card-title">{{job.job_title}}</h6>
               <span>
                 <img class="img-fluid jobicons" src="{% static 'img/wallet.svg' %}" alt=""  title="wallet"> 
-                1 - 3 years 
+                {{job.experience}}
               </span>
               <span>
                 <img class="img-fluid jobicons" src="{% static 'img/geo.svg' %}" alt="" title="Bootstrap"> 
-                Banglore
+                {{job.job_location}}
               </span>
               <p>
                 <img class="img-fluid jobicons" src="{% static 'img/laptop.svg' %}" alt="" title="geo"> 
@@ -58,7 +104,7 @@
               </span>
               <span class="toright">
                 <img class="img-fluid jobicons" src="{% static 'img/Clock.svg' %}" alt="" title="Clock"> 
-                yesterday
+                {{job.salary}}
               </span>
   
                <span class="toright">{{job.id}}</span>
@@ -83,5 +129,7 @@ emplyer
 {% endif %}
 
 
+
+<div class="row space"></div>
 
 {% endblock %}

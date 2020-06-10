@@ -1,0 +1,53 @@
+{% extends 'portal/main.html' %}
+
+{% load static %}
+{% load crispy_forms_tags %} 
+
+{% block content %}
+
+{% include 'portal/adminnavbar.html' %}
+
+
+<div class="row">
+        <div class="col-md-1">
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Jobs & Reponses
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="{% url 'addjobs' %}">Add Job</a>
+                  <a class="dropdown-item" href="{% url 'appliedjobs' %}">Applicants</a>
+                  
+                </div>
+              </div>
+        </div>
+        <div class="col-md-1">
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Resdex
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="{% url 'candidatesearch' %}">Search Candidate/Profile</a>
+                  <a class="dropdown-item" href="{% url 'profilelist' %}">All Profile</a>
+                </div>
+              </div>
+        </div>
+        {% comment %} <div class="col-md-1">
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Dropdown button
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="#">Another action</a>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+              </div>
+        </div> {% endcomment %}
+</div>
+
+
+
+
+
+  {% endblock %}

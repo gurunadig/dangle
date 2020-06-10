@@ -2,13 +2,13 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
-from django.urls import reverse_lazy, reverse
+from django.urls import reverse_lazy, reverse, NoReverseMatch
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required	
 from django.contrib.auth.decorators import user_passes_test
 from django.contrib.auth.models import Group, User
 from django.db import models
-from .forms import CreateUserForm, CreateAdminForm, CreateEmployerForm
+from .forms import CreateUserForm, CreateAdminForm, CreateEmployerForm, AddJobForm
 from .models import Job, Profile
 from .filters import JobFilter
 from .decorators import permission_required1
@@ -62,12 +62,12 @@ def home(request):
 	context = {'jobs':jobs, 'profile':profile, 'myfilter':myfilter}
 	return render(request, 'portal/landing.html', context)
 
-    # profiles = Profile.objects.all()
+
 @login_required(login_url='login')
-def profilepage(request):
-	profiles = request.user.profile.set_all()
+def adminpanel(request):
+	profiles = Profile.objects.all()
 	context = {'profiles': profiles}
-	return render(request, 'portal/profile.html', context)
+	return render(request, 'portal/adminpanel.html', context)
 
 
 def joblist(request, pk_test ):
@@ -80,6 +80,34 @@ def applyjob(request, pk):
 	job = get_object_or_404(Job, id=request.POST.get('job_id'))
 	job.apply.add(request.user)
 	return HttpResponseRedirect(reverse('joblist', args=[str(pk)]))
+
+
+def jobdetails(request):
+    jobs = Job.objects.all()
+    context = {'jobs': jobs}
+    return render(request, 'portal/jobdetails.html', context)
+
+
+def addjobs(request):
+	jobs = Job.objects.all()
+	form = AddJobForm()
+	if request.method == 'POST':
+		form = AddJobForm(request.POST)
+		if form.is_valid():
+			form.save()	
+	context = {'jobs': jobs, 'form':form}
+	return render(request, 'portal/addjobs.html', context)
+
+def appliedjobs(request):
+	return render(request, 'portal/appliedjobs.html')
+
+def candidatesearch(request):
+	return render(request, 'portal/candidatesearch.html')
+
+def profilelist(request):
+	profiles = Profile.objects.all()
+	context = {'profiles': profiles}
+	return render(request, 'portal/profilelist.html', context)
 
 
 def get_backends(request, return_tuples=False):

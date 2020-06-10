@@ -12,11 +12,17 @@
 
 
 .jobcol{
-  
-  margin-top: 20px;
+
   background-color: #eeeeee;
   
 }
+
+.jobcoldiv{
+  margin-top: 20px;
+  background-color: #eeeeee;
+}
+
+
 
 .featjob{
   margin-top: 20px;
@@ -154,3 +160,46 @@
     width: 100%;
     margin: auto;
   }
+
+
+  .bgreg{
+    width: 100%;
+    height: 100%;
+    background: #3c55b3 ;
+  }
+
+  .formdiv{
+    width: 100%;
+    height: 100vh;
+    min-height: 100vh;
+  }
+
+  .asteriskField {
+    display: none;
+}
+
+.searchsty{
+  height: 60px;
+  border-radius: 0px;
+  border: 1px solid #3c55b3;
+}
+
+.forfield{
+  padding-left: 0px;
+  padding-right: 0px;
+}
+.searchbtn{
+  background-color: #3c55b3;
+  color: #ffffff;
+}
+
+.space{
+  margin-bottom: 200px;
+}
+
+.jobtitl{
+  color: #3c55b3;
+  font-size: 1.3rem;
+  
+
+}

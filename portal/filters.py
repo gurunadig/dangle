@@ -5,8 +5,8 @@ from .models import *
 
 class JobFilter(django_filters.FilterSet):
     job_title = CharFilter(field_name='job_title', lookup_expr='icontains')
-    job_location = CharFilter(field_name='job_location', lookup_expr='icontains')
     skills = CharFilter(field_name='skills', lookup_expr='icontains')
+    job_location = CharFilter(field_name='job_location', lookup_expr='icontains')
 
 
     class Meta:

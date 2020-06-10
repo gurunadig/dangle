@@ -1,0 +1,41 @@
+{% extends 'portal/main.html' %}
+
+{% load static %}
+
+{% block content %}
+
+
+
+<form action="" method="POST">
+  
+  {% csrf_token %}
+
+  {{form}}  
+  
+  <button class="btn btn-primary" type="submit">Submit</button>
+</form>
+
+{%  for job in jobs %}  
+  
+      <div id="joblist" class="col-sm-12 col-md-6 col-lg-6">
+        <div class="card jobcol">
+          <div class="card-body">
+         
+            <h6 class="card-title">{{job.name}}</h6>
+              <span>
+                {{job.email}}
+              </span>
+               <span class="">{{job.phone}}</span>
+  
+              {% comment %} <a href="{% url 'updatedetail' detail.id %}"> Update </a>
+              <a href="{% url 'deletedetail' detail.id %}"> Delete </a> {% endcomment %}
+          </div>
+        </div>
+       
+      </div>
+  
+{% endfor %} 
+
+  
+
+{% endblock %}

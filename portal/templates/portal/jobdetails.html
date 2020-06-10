@@ -1,0 +1,60 @@
+{% extends 'portal/main.html' %}
+
+{% load static %}
+{% load crispy_forms_tags %} 
+
+{% block content %}
+
+{% include 'portal/navbar.html' %}
+
+
+<div class="container">
+
+    <h4>Details Jobs</h4>
+    <div class="row">
+  
+      {%  for job in jobs %}  
+  
+      <div class="col-sm-12 col-md-8 col-lg-8 offset-2">
+        <div class="card">
+          <div class="card-body">
+         
+            <p class="jobtitl">{{job.job_title}}</p>
+
+              <span>
+                <img class="img-fluid jobicons" src="{% static 'img/wallet.svg' %}" alt=""  title="wallet"> 
+                {{job.experience}}
+              </span>
+              <span class="">
+                <img class="img-fluid jobicons" src="{% static 'img/tag.svg' %}" alt="" title="tag"> 
+                {{job.salary}}
+              </span>
+              <span>
+                <img class="img-fluid jobicons" src="{% static 'img/geo.svg' %}" alt="" title="Bootstrap"> 
+                {{job.job_location}}
+              </span>
+              <span>
+                <img class="img-fluid jobicons" src="{% static 'img/laptop.svg' %}" alt="" title="geo"> 
+                {{job.job_description}}
+              </span>
+              <span class="toright">
+                <img class="img-fluid jobicons" src="{% static 'img/Clock.svg' %}" alt="" title="Clock"> 
+                {{job.salary}}
+              </span>
+  
+               <span class="toright">{{job.id}}</span>
+  
+              <a href="{% url 'joblist' job.id %}"> view </a>
+          </div>
+        </div>
+       
+      </div>
+  
+      {% endfor %}
+
+    </div>
+  </div>
+
+
+
+  {% endblock %}

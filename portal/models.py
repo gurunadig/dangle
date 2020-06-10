@@ -3,8 +3,8 @@ from django.contrib.auth.models import User , Group
 
 
 class Profile(models.Model):
-    user = models.OneToOneField(User, null=True, on_delete=models.CASCADE) 
-    dob = models.DateField(max_length=8)    
+    user = models.OneToOneField(User, null=True, on_delete=models.CASCADE,) 
+    dob = models.DateField(max_length=8,)    
     clocation = models.CharField(max_length=30)
     qualification = models.CharField(max_length=30)
     course = models.CharField(max_length=30)
@@ -27,8 +27,8 @@ def __str__(self):
 
 class Job(models.Model):
 	
-	job_title = models.CharField(max_length=30)
-	job_description = models.CharField(max_length=30)
+	job_title = models.CharField(max_length=30,)
+	job_description = models.TextField()
 	job_location = models.CharField(max_length=30)
 	company_name = models.CharField(max_length=30)
 	Designation = models.CharField(max_length=30)

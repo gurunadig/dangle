@@ -1,0 +1,46 @@
+{% load static %}
+
+<div class="container">
+
+    <h4>Details Jobs</h4>
+    <div class="row">
+  
+      {%  for profile in profiles %}  
+  
+      <div class="col-sm-12 col-md-8 col-lg-8 offset-2">
+        <div class="card">
+          <div class="card-body">
+         
+            <p class="jobtitl">{{profile.dob}}</p>
+
+              <span>
+                <img class="img-fluid jobicons" src="{% static 'img/wallet.svg' %}" alt=""  title="wallet"> 
+                {{profile.clocation}}
+              </span>
+              <span class="">
+                <img class="img-fluid jobicons" src="{% static 'img/tag.svg' %}" alt="" title="tag"> 
+                {{profile.qualification}}
+              </span>
+              <span>
+                <img class="img-fluid jobicons" src="{% static 'img/geo.svg' %}" alt="" title="Bootstrap"> 
+                {{profile.course}}
+              </span>
+              <span>
+                <img class="img-fluid jobicons" src="{% static 'img/laptop.svg' %}" alt="" title="geo"> 
+                {{profile.university}}
+              </span>
+              <span class="toright">
+                <img class="img-fluid jobicons" src="{% static 'img/Clock.svg' %}" alt="" title="Clock"> 
+                {{profile.College}}
+              </span>
+
+
+          </div>
+        </div>
+       
+      </div>
+  
+      {% endfor %}
+
+    </div>
+  </div>
